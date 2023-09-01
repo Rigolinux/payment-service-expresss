@@ -22,7 +22,7 @@ export const createCheckoutSession = async (req, res) => {
 
         const response = await axios(config);
         console.log(response.data);
-        res.json({ message: 'Hello World' });
+        res.json({ message: response.data });
     }
     catch(err){
         console.log(err);
@@ -34,8 +34,29 @@ export const createCheckoutSession = async (req, res) => {
 
 export const successPayment = async (req, res) => {
     try{
-        //req.body.products has the products
         
+        //req.body.products has the products
+        const token = req.body.token;
+
+        const body = {
+            identificadorEnlaceComercio: "123456789",
+            monto: 100,
+            nombreProducto: "Producto de prueba pancitos",
+        }
+
+        const config = {
+            method: 'post',
+            url: 'https://sandbox.wompi.sv/links',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token,
+            },
+            data: body,
+        }
+
+        const response = await axios(config);
+        console.log(response.data);
+        res.json({ message: 'Hello World' });
 
     }
     catch(err){
