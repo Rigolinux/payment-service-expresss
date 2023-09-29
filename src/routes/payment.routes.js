@@ -8,11 +8,11 @@ import auth from './../middlewares/auth.js';
 
 const router = Router();
 
-router.get('/verify', auth , createCheckoutSession);
+router.post('/wompy/sendtobill', auth , createCheckoutSession);
 
-router.get('/success', auth , successPayment);
+router.get('/wompy/success', auth , successPayment);
 
-router.get('/cancel', auth , cancelPayment);
+
 
 //payment routes paypal
 
@@ -20,6 +20,11 @@ router.get('/paypal/sendtobill', auth , SendToBill);
 
 router.get('/paypal/captureorder', auth , captureOrder);
 
+router.post('/success/:id', (req,res)=>{
+    console.log("wh");
+
+    res.send("success paypal");
+});
 
 
 export default router;

@@ -3,6 +3,7 @@ import { EnvConfig} from "../config/config.js";
 
 
 
+
 export const createCheckoutSession = async (req, res) => {
     try {
         const requestBody = new URLSearchParams();
@@ -22,7 +23,28 @@ export const createCheckoutSession = async (req, res) => {
 
         const response = await axios(config);
         console.log(response.data);
-        res.json({ message: response.data });
+
+        const config_2 = {
+            method: 'post',
+            url: 'https://api.wompi.sv/EnlacePago',
+            headers: {
+                authorization: 'Bearer ' + response.data.access_token,
+                'Content-Type': 'application/json',
+            },
+            data: {
+                identificadorEnlaceComercio: "123456789",
+                monto: 100,
+                nombreProducto: "Producto de prueba pancitos",
+                configuracion: {
+                    urlRedirect: `http://localhost:5174/?token=${1234}`,
+                    urlWebhook: `http://localhost:5174/?tokenR=${1234}`,
+                },
+            }
+        }
+
+        const response_2 = await axios(config_2);
+
+        res.json({ ...response_2.data });
     }
     catch(err){
         console.log(err);
@@ -42,6 +64,10 @@ export const successPayment = async (req, res) => {
             identificadorEnlaceComercio: "123456789",
             monto: 100,
             nombreProducto: "Producto de prueba pancitos",
+            configuracion: {
+                urlRedirect: `http://localhost:5174/?token=${1234}`,
+                urlRetorno: `http://localhost:5174/?tokenR=${1234}`,
+            },
         }
 
         const config = {

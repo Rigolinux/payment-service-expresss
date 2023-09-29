@@ -70,7 +70,7 @@ export const captureOrder = async(req,res)=> {
       
    
         const resp = await axios.post(
-            `https://api.sandbox.paypal.com/v2/checkout/orders/${orderId}/capture`,
+            `${EnvConfig.Paypal_url}/v2/checkout/orders/${orderId}/capture`,
         {},
         {
             auth: {
