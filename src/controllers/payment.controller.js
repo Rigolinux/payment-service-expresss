@@ -22,7 +22,8 @@ export const createCheckoutSession = async (req, res) => {
         };
 
         const response = await axios(config);
-        console.log(response.data);
+        
+        const body = req.body;
 
         const config_2 = {
             method: 'post',
@@ -32,12 +33,17 @@ export const createCheckoutSession = async (req, res) => {
                 'Content-Type': 'application/json',
             },
             data: {
+                // un generador de pago
                 identificadorEnlaceComercio: "123456789",
-                monto: 100,
-                nombreProducto: "Producto de prueba pancitos",
+                monto: body.monto,
+                nombreProducto: "Pagar a comercio de prueba",
+                infoProducto: {
+                    //talvez un logo aqui
+                    urlImagenProducto : "https://clqqyepphecgzgrmpjos.supabase.co/storage/v1/object/public/profile_photos/public/3pqmji2bzwj.jpg?t=2023-10-17T21%3A57%3A49.199Z"
+                },
                 configuracion: {
-                    urlRedirect: `http://localhost:5174/?token=${1234}`,
-                    urlWebhook: `http://localhost:5174/?tokenR=${1234}`,
+                    urlRedirect: `http://localhost:5173/?type=Wompy`,
+                    urlWebhook: `http://localhost:5173/`,
                 },
             }
         }
