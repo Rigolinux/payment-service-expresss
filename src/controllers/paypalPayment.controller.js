@@ -34,7 +34,7 @@ export const SendToBill = async(req,res)=> {
       params.append('grant_type', 'client_credentials');
       const {
         data: { access_token },
-      } = await axios.post(`${env.Paypal_url}/v1/oauth2/token`, params, {
+      } = await axios.post(`${EnvConfig.Paypal_url}/v1/oauth2/token`, params, {
         auth: {
           username: EnvConfig.Paypal_client_id,
           password: EnvConfig.Paypal_client_secret,

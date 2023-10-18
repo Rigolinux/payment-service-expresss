@@ -16,7 +16,7 @@ router.get('/wompy/success', auth , successPayment);
 
 //payment routes paypal
 
-router.get('/paypal/sendtobill', auth , SendToBill);
+router.post('/paypal/sendtobill', auth , SendToBill);
 
 router.get('/paypal/captureorder', auth , captureOrder);
 
