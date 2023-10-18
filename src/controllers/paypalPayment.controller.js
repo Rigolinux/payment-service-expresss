@@ -7,7 +7,7 @@ export const SendToBill = async(req,res)=> {
 
     //aumont means the price to pay
     try{
-        const amount = req.body.amount;
+        const monto = req.body.monto;
     
       
         const order = {
@@ -18,15 +18,15 @@ export const SendToBill = async(req,res)=> {
                     currency_code: 'USD',
                     //TOtal a pagar por el cliente
                     // value: '1',
-                    value: amount,
+                    value: monto,
                     },
                 },
             ],
             application_context: {
-                brand_name: 'Milpa Verde',
+                brand_name: 'Prueba Negocio',
                 landing_page: 'NO_PREFERENCE',
                 user_action: 'PAY_NOW',
-                return_url: `${EnvConfig.HostPort}/test`,
+                return_url: `${EnvConfig.HostPort}/proccess-order?type=Paypal`,
                 cancel_url: `${EnvConfig.HostPort}/cart`,
             },
       };

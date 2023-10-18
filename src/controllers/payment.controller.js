@@ -42,7 +42,7 @@ export const createCheckoutSession = async (req, res) => {
                     urlImagenProducto : "https://clqqyepphecgzgrmpjos.supabase.co/storage/v1/object/public/profile_photos/public/3pqmji2bzwj.jpg?t=2023-10-17T21%3A57%3A49.199Z"
                 },
                 configuracion: {
-                    urlRedirect: `http://localhost:5173/?type=Wompy`,
+                    urlRedirect: `http://localhost:5173/proccess-order?type=Wompy`,
                     urlWebhook: `http://localhost:5173/`,
                 },
             }
