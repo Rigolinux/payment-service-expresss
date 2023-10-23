@@ -27,7 +27,7 @@ export const SendToBill = async(req,res)=> {
                 landing_page: 'NO_PREFERENCE',
                 user_action: 'PAY_NOW',
                 return_url: `${EnvConfig.HostPort}/proccess-order?type=Paypal&monto=${monto}`,
-                cancel_url: `${EnvConfig.HostPort}/`,
+                cancel_url: `${EnvConfig.HostPort}/cart`,
             },
       };
       const params = new URLSearchParams();
