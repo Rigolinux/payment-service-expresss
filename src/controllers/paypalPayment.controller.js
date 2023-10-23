@@ -26,8 +26,8 @@ export const SendToBill = async(req,res)=> {
                 brand_name: 'Prueba Negocio',
                 landing_page: 'NO_PREFERENCE',
                 user_action: 'PAY_NOW',
-                return_url: `${EnvConfig.HostPort}/proccess-order?type=Paypal`,
-                cancel_url: `${EnvConfig.HostPort}/cart`,
+                return_url: `${EnvConfig.HostPort}/proccess-order?type=Paypal&monto=${monto}`,
+                cancel_url: `${EnvConfig.HostPort}/`,
             },
       };
       const params = new URLSearchParams();
